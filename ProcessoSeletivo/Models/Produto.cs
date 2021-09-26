@@ -12,6 +12,7 @@ namespace ProcessoSeletivo.Models
         public double ValorUnitario { get; set; }
         public int Estoque { get; set; }
         public Categoria Categoria { get; set; }
+        public int CategoriaId { get; set; }
 
         public Produto()
         {

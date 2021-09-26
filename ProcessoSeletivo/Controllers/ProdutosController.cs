@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProcessoSeletivo.Services;
 using ProcessoSeletivo.Models;
+using ProcessoSeletivo.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,10 +12,12 @@ namespace ProcessoSeletivo.Controllers
     public class ProdutosController : Controller
     {
         private readonly ProdutoService _produtoService;
+        private readonly CategoriaService _categoriaService;
 
-        public ProdutosController (ProdutoService produtoService)
+        public ProdutosController (ProdutoService produtoService, CategoriaService categoriaService)
         {
             _produtoService = produtoService;
+            _categoriaService = categoriaService;
         }
         public IActionResult Index()
         {
@@ -24,7 +27,9 @@ namespace ProcessoSeletivo.Controllers
 
         public IActionResult Create()
         {
-            return View();
+            var categorias = _categoriaService.FindAll();
+            var viewModel = new ProdutoFormViewModel { Categorias = categorias };
+            return View(viewModel);
         }
 
         [HttpPost]
