@@ -1,6 +1,6 @@
 using System;
 
-namespace ProcessoSeletivo.Models
+namespace ProcessoSeletivo.Models.ViewModels
 {
     public class ErrorViewModel
     {
