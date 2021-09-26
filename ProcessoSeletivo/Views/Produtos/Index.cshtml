@@ -1,15 +1,14 @@
-﻿
-@model IEnumerable<ProcessoSeletivo.Models.Produto>
+﻿@model IEnumerable<ProcessoSeletivo.Models.Produto>
 
 @{
     ViewData["Title"] = "Produtos";
 }
 
-<h2>@ViewData [""Title""] </h2>
+<h2>@ViewData["Title"]</h2>
 
 <table class="table table-striped table-hover">
     <thead>
-        <tr>
+        <tr class="warning">
             <th>
                 @Html.DisplayNameFor(model => model.Nome)
             </th>
@@ -19,23 +18,34 @@
             <th>
                 @Html.DisplayNameFor(model => model.Estoque)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Categoria)
+            </th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Nome)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ValorUnitario)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Estoque)
-                    </td>
-                </tr>
-            }
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorUnitario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estoque)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Categoria)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+        }
     </tbody>
 </table>
 
