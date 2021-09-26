@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProcessoSeletivo.Services;
+using ProcessoSeletivo.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,19 @@ namespace ProcessoSeletivo.Controllers
         {
             var list = _produtoService.FindAll();
             return View(list);
+        }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Produto produto)
+        {
+            _produtoService.Insert(produto);
+            return RedirectToAction(nameof(Index));
         }
     }
 }

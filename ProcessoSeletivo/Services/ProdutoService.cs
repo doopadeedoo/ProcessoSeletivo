@@ -19,5 +19,11 @@ namespace ProcessoSeletivo.Services
         {
             return _context.Produto.ToList();
         }
+
+        public void Insert(Produto obj)
+        {
+            _context.Add(obj);
+            _context.SaveChanges();
+        }
     }
 }
