@@ -11,6 +11,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using ProcessoSeletivo.Models;
+using ProcessoSeletivo.Services;
 
 namespace ProcessoSeletivo
 {
@@ -39,6 +40,8 @@ namespace ProcessoSeletivo
             services.AddDbContext<ProcessoSeletivoContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("ProcessoSeletivoContext"), builder =>
                         builder.MigrationsAssembly("ProcessoSeletivo")));
+
+            services.AddScoped<ProdutoService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

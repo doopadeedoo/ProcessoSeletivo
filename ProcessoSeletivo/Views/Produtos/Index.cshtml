@@ -1,9 +1,41 @@
 ﻿
+@model IEnumerable<ProcessoSeletivo.Models.Produto>
+
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Produtos";
 }
 
-<h2>PROD</h2>
+<h2>@ViewData [""Title""] </h2>
 
-<p>Produtos</p>
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValorUnitario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estoque)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ValorUnitario)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Estoque)
+                    </td>
+                </tr>
+            }
+    </tbody>
+</table>
 
