@@ -13,6 +13,9 @@ namespace ProcessoSeletivo.Models
         {
         }
 
-        public DbSet<ProcessoSeletivo.Models.Categoria> Categoria { get; set; }
+        //public DbSet<ProcessoSeletivo.Models.Categoria> Categoria { get; set; }
+        public DbSet<Categoria> Categoria { get; set; }
+        public DbSet<Produto> Produto{ get; set; }
+
     }
 }
